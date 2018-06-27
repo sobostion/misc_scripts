@@ -1,3 +1,8 @@
+# 
+# Takes an image and splits it into 9 different slack
+# emojis of appropriate dimensions
+#
+
 import Image
 import os, sys
 
