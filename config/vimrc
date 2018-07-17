@@ -1,7 +1,17 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+call plug#end()
+
+
 filetype plugin on
 syntax on
 set backspace=indent,eol,start
-colorscheme molokai
+"colorscheme molokai
+colorscheme seoul256
 set cursorline
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -16,3 +26,37 @@ set expandtab
 set ignorecase
 set smartcase
 " set foldmethod=indent
+au FileType *.groovy | Goyo
+
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+let g:seoul256_background = 234
+colo seoul256
+
+autocmd VimEnter * Goyo
+
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
+
+"autocmd! User GoyoEnter Limelight
+"autocmd! User GoyoLeave Limelight!
