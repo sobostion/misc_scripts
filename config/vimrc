@@ -31,10 +31,10 @@ au FileType *.groovy | Goyo
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
-let g:seoul256_background = 234
+let g:seoul256_background = 235
 colo seoul256
 
-autocmd VimEnter * Goyo
+"autocmd VimEnter * Goyo
 
 
 function! s:goyo_enter()
