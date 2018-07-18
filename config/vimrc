@@ -42,7 +42,7 @@ function! s:goyo_enter()
   let b:quitting_bang = 0
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-  Limelight
+  Limelight 0.6
 endfunction
 
 function! s:goyo_leave()
