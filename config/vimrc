@@ -42,7 +42,7 @@ function! s:goyo_enter()
   let b:quitting_bang = 0
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-  Limelight 0.6
+  "Limelight 0.6
 endfunction
 
 function! s:goyo_leave()
@@ -54,11 +54,14 @@ function! s:goyo_leave()
       qa
     endif
   endif
-  Limelight!
+  "Limelight!
 endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+map + :Limelight 0.6 <CR>
+map _ :Limelight! <CR>
 
 "autocmd! User GoyoEnter Limelight
 "autocmd! User GoyoLeave Limelight!
