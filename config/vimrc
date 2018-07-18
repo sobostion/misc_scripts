@@ -12,7 +12,7 @@ syntax on
 set backspace=indent,eol,start
 "colorscheme molokai
 colorscheme seoul256
-set cursorline
+"set cursorline
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
@@ -34,7 +34,7 @@ au FileType *.groovy | Goyo
 let g:seoul256_background = 235
 colo seoul256
 
-"autocmd VimEnter * Goyo
+autocmd VimEnter * Goyo 100
 
 
 function! s:goyo_enter()
