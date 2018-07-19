@@ -24,6 +24,7 @@ cl() {
 }
 
 cht(){
-   sed_plus=$( echo $2 | sed 's/ /+/g' )
-   curl cht.sh/$1/$sed_plus
+    cmd_args=$@
+    query=$( echo ${cmd_args[@]/$1} | sed 's/ /+/g' )
+    curl cht.sh/$1/$query
 }
