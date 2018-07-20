@@ -3,6 +3,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -10,8 +17,9 @@ call plug#end()
 filetype plugin on
 syntax on
 set backspace=indent,eol,start
-"colorscheme molokai
-colorscheme seoul256
+"colo molokai
+"colo solarized
+colo seoul256
 "set cursorline
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -32,7 +40,7 @@ au FileType *.groovy | Goyo
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background = 235
-colo seoul256
+"colo seoul256
 
 autocmd VimEnter * Goyo 100
 
@@ -62,6 +70,10 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 map + :Limelight 0.6 <CR>
 map _ :Limelight! <CR>
+map  / <Plug>(easymotion-sn)
+nmap n <Plug>(easymotion-next)
 
-"autocmd! User GoyoEnter Limelight
-"autocmd! User GoyoLeave Limelight!
+set background=dark
+set laststatus=2
+let g:lightline = { 'colorscheme': 'seoul256' }
+set noshowmode
