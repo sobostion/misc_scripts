@@ -1,0 +1,40 @@
+export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=$PATH:/Users/sebastiannorris/bin
+export EDITOR=vim
+export ANSIBLE_NOCOWS=1
+
+alias diff="colordiff"
+
+# minimalist prompt
+export PS1=" \e[33m\]\W \e[0m\]"
+
+
+# # # # # # # # # # # # # # # # # # #
+#           my functions            #
+# # # # # # # # # # # # # # # # # # #
+
+# minimal grep
+ng(){
+	grep --count -r $1 ./ | grep -v :0
+}
+
+# for renaming terminal windows
+title() {
+    echo -ne "\033]0;"$*"\007"
+}
+
+# clear window
+cl() {
+    count=0;
+    while [ $count -lt 50 ]; do
+        echo ""
+        count=$(($count + 1))
+    done
+}
+
+# cheet sheet
+cht(){
+    cmd_args=$@
+    query=$( echo ${cmd_args[@]/$1} | sed 's/ /+/g' )
+    curl cht.sh/$1/$query
+}
