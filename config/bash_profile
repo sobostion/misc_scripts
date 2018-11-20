@@ -47,10 +47,10 @@ cht(){
 floop(){
     cmd_args=$@
     for loopy in $@; do
-        echo $@| $(awk -F::: '{print $NF}')
+        cmd_to_loop=$( echo $@ | awk -F::: '{print $NF}' )
+        $cmd_to_loop $loopy
     done
 }
-
 
 # # # # # # # # # # # # # # # # # # #
 #           ls colour scheme        #
